@@ -1,0 +1,8 @@
+{
+    "name": "monboncoin",
+    "dbName":"boutiqueannonce",
+    "user":"root",
+    "password":"",
+    "host":"localhost",
+    "baseSite": "/PHP/projet/monboncoin"
+}
