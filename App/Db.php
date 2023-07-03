@@ -22,7 +22,5 @@ class Db
     }
 }
 
-$testBdd = new Db();
-var_dump($testBdd);
-var_dump(get_class_methods($testBdd));
+
 
