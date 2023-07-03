@@ -7,7 +7,7 @@ class Autoload
         require_once __DIR__. '/'. str_replace('\\', DIRECTORY_SEPARATOR, $className). '.php';
     }
 }
-spl_autoload_register('Autoload','inclusionAuto');
+spl_autoload_register(array('Autoload','inclusionAuto'));
 
 
 // echo __DIR__;
