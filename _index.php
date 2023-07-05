@@ -132,7 +132,7 @@ require_once('autoloader.php');
 // echo "</pre>";
 
 // test de la methode de create() de AnnoncesModel
-//  $data = [1,3,"aaaaaaa","aaaaaaaa",22500,"aaaaaaaaa"];
+//  $data = [1,5,"iphone x","iphone x",400,"6.png"];
 // $annonce = AnnoncesModel::create($data);
 
 // test de la methode de update() de AnnoncesModel

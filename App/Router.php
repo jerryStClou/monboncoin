@@ -3,6 +3,7 @@ namespace App;
 
 use Controllers\MainController;
 use Controllers\AnnoncesController;
+use Controllers\UsersController;
 
 class Router
 {
@@ -32,14 +33,17 @@ class Router
        {
         case '':
             // echo 'page d\'accueil affiche les deux dernières annonces';
-            MainController::test();
+            // MainController::test();
+            AnnoncesController::annonces("date DESC", "LIMIT 2");
             break;
         case 'annonces':
-            echo 'toutes les annonces';
+            // echo 'toutes les annonces';
             AnnoncesController::annonces();
             break;
         case 'annonceDetail':
-            echo 'affichage d\'une annonce';
+            // echo 'affichage d\'une annonce';
+            $id = $_GET["id"];
+            AnnoncesController::detail($id);
             break;
         case 'annonceAjout':
             echo 'ajout d\'une annonce';
@@ -60,7 +64,8 @@ class Router
             echo 'inscription';
             break;
         case 'connexion':
-            echo 'connexion';
+            // echo 'connexion';
+            UsersController::connexion();
             break;
         case 'deconnexion':
             echo 'deconnexion';
