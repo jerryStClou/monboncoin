@@ -11,7 +11,7 @@ class Db{
     static function getDb(){
         if(!self::$db){
             try{
-                $config = file_get_contents('App/config.json');
+                $config = file_get_contents('../App/config.json');
                 // Pour index.php
                 // $config = file_get_contents('App/config.json');
                 $config = json_decode($config);
