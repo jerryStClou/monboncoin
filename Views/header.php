@@ -24,8 +24,11 @@
         <li class="nav-item">
           <a class="nav-link" href="annonces">Tous les annonces</a>
         </li>
-        
-       
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <a href="connexion" class="btn btn-primary">Connexion</a>
+        </li>
       </ul>
       
     </div>

@@ -4,8 +4,34 @@
 
 <h1 class="text-center"><?= $title ?></h1>
 
-<!-- <p><?php echo "<pre>"; var_dump($annonces) ; echo "</pre>"?></p> -->
 
+<!-- Formulaire de tri et filtre -->
+<div>
+<form method="GET" class="row justify-content-around mb-5">
+        <!-- Filtre par categorie -->
+        <div class="m-2 col-12 col-md-4">
+            <label for="">Filtrer par catégories</label>
+            <select name="id_categorie" id="categorie" class="form-select">
+                <option value="">Toutes les catégories</option>
+                <?php foreach($categories as $categorie): ?>
+                    <option value="<?= $categorie['id_categorie'] ?>"><?= $categorie['title'] ?></option>
+                <?php endforeach ?>
+            </select>
+        </div>
+        <!-- Tri par prix  -->
+        <div class="m-2 col-12 col-md-4">
+            <label for="">Trier par prix</label>
+            <select name="price" id="price" class="form-select">
+                <option value="price ASC">Prix Ascendant</option>
+                <option value="price DESC">Prix Descendant</option>
+            </select>
+        </div>
+        <button class="btn btn-secondary">Trier</button>
+    </form>
+</div>
+
+
+<!-- Affichage des annonces -->
 <div class="container border border-secondary p-5">
     <div class="row justify-content-around">
         <?php foreach($annonces as $key => $annonce): ?>
@@ -16,7 +42,7 @@
                     <h5 class="card-title"><?= $annonce['title'] ?>, categorie : <?= $annonce['titleCat'] ?></h5>
                     <p class="card-text"><?= $annonce['description'] ?></p>
                     <p><?= $annonce['price'] ?> €</p>
-                    <a href="#" class="btn btn-primary">Voir le detail</a>
+                    <a href="annonceDetail?id=<?= $annonce['id_annonce'] ?>" class="btn btn-primary">Voir le detail</a>
                 </div>
           </div>
         <?php endforeach ?>    
