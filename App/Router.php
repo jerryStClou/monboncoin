@@ -1,6 +1,9 @@
 <?php
 namespace App;
 
+use Controllers\MainController;
+use Controllers\AnnoncesController;
+
 class Router
 {
     public function app()
@@ -28,10 +31,12 @@ class Router
        switch ($request)
        {
         case '':
-            echo 'page d\'accueil affiche les deux dernières annonces';
+            // echo 'page d\'accueil affiche les deux dernières annonces';
+            MainController::test();
             break;
         case 'annonces':
             echo 'toutes les annonces';
+            AnnoncesController::annonces();
             break;
         case 'annonceDetail':
             echo 'affichage d\'une annonce';
