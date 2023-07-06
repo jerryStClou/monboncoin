@@ -12,7 +12,7 @@
 
 // echo __DIR__;
 
-
+// L'autoloader sert a automatiser le require des classes necessaires à l'application
 
 class Autoload {
     public static function inclusionAuto($className) {

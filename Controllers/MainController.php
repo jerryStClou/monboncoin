@@ -1,7 +1,7 @@
 <?php
 
 namespace Controllers;
-
+// les Controlleurs servent à dialoguer avec la base de données et par l'intermédiare des models, et envoyer le resultat dans la bonne vues
 class MainController
 {
     // Méthode pour envoyer à la bonne vue
