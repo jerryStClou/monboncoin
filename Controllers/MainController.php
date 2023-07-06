@@ -1,13 +1,15 @@
 <?php
 
 namespace Controllers;
-// les Controlleurs servent à dialoguer avec la base de données et par l'intermédiare des models, et envoyer le resultat dans la bonne vues
+
 class MainController
 {
     // Méthode pour envoyer à la bonne vue
     public static function render($views, $data = [])
     {
+        // $data = ['title' => 'connexion'];
         extract($data);
+        // $title = 'connexion';
         // On met en memoire tampon
         ob_start();
 
@@ -17,6 +19,15 @@ class MainController
         $content = ob_get_clean();
         // On appel la vue principale
         require_once ROOT . '/Views/layout.php';
+    }
+
+    // Méthode de sécurisation des saisies de formulaire
+    public static function security(){
+        if(!empty($_POST)){
+            foreach($_POST as $key => $value){
+                $_POST['key'] = htmlspecialchars(trim($value));
+            }
+        }
     }
 
 

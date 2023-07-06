@@ -61,14 +61,18 @@ class Router
             echo 'votre panier';
             break;
         case 'inscription':
-            echo 'inscription';
+            // echo 'inscription';
+            UsersController::inscription();
             break;
         case 'connexion':
             // echo 'connexion';
             UsersController::connexion();
             break;
         case 'deconnexion':
-            echo 'deconnexion';
+            // echo 'deconnexion';
+            // supprimer les donnes user de $_SESSION
+            unset($_SESSION["user"]);
+            header("location: ". SITEBASE);
             break;
         case 'profil':
             echo 'profil';

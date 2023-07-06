@@ -4,6 +4,13 @@ use Models\CategoriesModel;
 use Models\UsersModel;
 use Models\AnnoncesModel;
 require_once('autoloader.php');
+/* 
+On ouvre une session pour gerer:
+la connexion utitlisateur
+le panier
+---potentiellement toutes les infos neccessaires
+Il ne faut jamais enregistrer le mdp (et toutes les données critiques) dans la session pour des raisons de securité
+*/
 // test de la methosz findAll()
 // $categories = CategoriesModel::findAll();
 
@@ -88,10 +95,14 @@ require_once('autoloader.php');
 
 
 // test de la methode update() de UsersModel()
-// $password = password_hash("5678", PASSWORD_BCRYPT);
+// $password = password_hash("1234", PASSWORD_DEFAULT);
+// $password2 = password_hash("1234", PASSWORD_DEFAULT);
+//  $data = ["admin@gmail.com",$password, "admin","admin","55 Rue du Lieutenant Thomas",93170,"Bagnolet","06 45 73 94 55",1];
 
-// $data = ["essai@gmail.com",$password, "prenomEssai","nomEssai","rue de Paris",75011,"Paris","06 45 73 94 55",3];
-// $userUpdate = UsersModel::update($data);
+//  $data2 = ["jerry@gmail.com",$password2, "Jerry","admin","55 Rue du Lieutenant Thomas",93170,"Bagnolet","06 45 73 94 55",2];
+
+//  $userUpdate = UsersModel::update($data);
+//  $userUpdate2 = UsersModel::update($data2);
 
 
 // test de la methode delete de UsersModel

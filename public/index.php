@@ -2,6 +2,8 @@
 use App\Router;
 // ce fichier et le point d'entrée de notre site
 
+// on ouvre une session
+session_start();
 // C'est ici qu'il daut faire appelle a l'autoloader
 // Création d'une constante pour l'url de base du site
 $config = file_get_contents('../App/config.json');
