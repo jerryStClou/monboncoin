@@ -52,7 +52,7 @@ class UsersModel extends Db
         // data est un tableau qui contient les infos du user à insérer en bdd
         $request = "INSERT INTO users (login, password, firstname, lastname, adress, cp, city, phone) VALUES (?,?,?,?,?,?,?,?) ";
         $response = self::getDb()->prepare($request);
-        $response->execute($data);
+        return $response->execute($data);
     } 
 
     // Update user

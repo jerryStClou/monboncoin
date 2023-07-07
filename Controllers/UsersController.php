@@ -45,6 +45,7 @@ class UsersController extends MainController
             $errMsg = "Merci de remplir tous les champs";
         }
 
+
         self::render('users/connexion', [
             'title' => 'Connexion',
             'errMsg' => $errMsg
@@ -52,7 +53,8 @@ class UsersController extends MainController
     }
 
     // Méthode d'inscription
-    public static function inscription(){
+    public static function inscription()
+    {
         $errMsg = "";
         // Regex du mot de passe
         $pattern = '/^.{8,}$/';
@@ -107,8 +109,12 @@ class UsersController extends MainController
                         $_POST["phone"]
                     ];
                     $newUser = UsersModel::create($data);
-                    header('Location: ' . SITEBASE);
-                    
+                    if($newUser)
+                    {
+                        // J'ajoute un message dans la session pour pouvoir l'afficher ou je veux dans l'application
+                        $_SESSION['message'] = "Votre compte est bien crée, vous pouvez vous connecter";
+                        header("location: connexion");
+                    }                    
                 }
             }
 
@@ -120,6 +126,26 @@ class UsersController extends MainController
         self::render('users/inscription', [
             'title' => 'Inscription',
             'errMsg' => $errMsg
+        ]);
+    }
+
+    // Methode de gestion du profil
+      // Méthode de gestion du profil
+      public static function profil(){
+        // Teste sur le role de l'utilisateur
+        if($_SESSION['user']['role'] == 1)// je suis admin, donc je recupère toutes les annonces
+        {
+            $annonces = AnnoncesModel::findAll();
+        }else{
+            // Uniquement les annonces du user connecté
+            $userId = $_SESSION['user']['id'];
+            $annonces = AnnoncesModel::findByUser([$userId]);
+        }
+
+
+        self::render('users/profil',[
+            'title' => "votre profil",
+            'annonces' => $annonces
         ]);
     }
 }

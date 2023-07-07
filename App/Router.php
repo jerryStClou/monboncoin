@@ -46,13 +46,16 @@ class Router
             AnnoncesController::detail($id);
             break;
         case 'annonceAjout':
-            echo 'ajout d\'une annonce';
+            // echo 'ajout d\'une annonce';
+            AnnoncesController::create();
             break;
         case 'annonceModif':
-            echo "modification d'une annonce";
+            // echo "modification d'une annonce";
+            AnnoncesController::update();
             break;
         case 'annonceSupp':
-            echo "suppression d'une annonce";
+            // echo "suppression d'une annonce";
+            AnnoncesController::delete();           
             break;
         case 'annonceConfirm':
             echo 'confirmation de suppression';
@@ -75,7 +78,8 @@ class Router
             header("location: ". SITEBASE);
             break;
         case 'profil':
-            echo 'profil';
+            // echo 'profil';
+            UsersController::profil();
             break;
         default:
             echo 'cette page n\'existe pas 404';

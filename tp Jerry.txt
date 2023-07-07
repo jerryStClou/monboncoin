@@ -1,0 +1,79 @@
+Sujet :
+
+Créer le profil utilisateur
+
+Quand un utilisateur est connecté:
+Au clic sur profil:
+
+1/
+Afficher une vue qui contient toutes les annonces de l'utilisateur connecté (et uniquement les siennes) ou toutes les annonces si l'utilisateur connecté est l'admin
+
+Tout d'abord je creer le fichier "profil.php" dans le dossier Views/annonces
+.Puis je creer la methode profil() dans le controller AnnoncesController.
+Dans cette methode je me sert de la methode findByUser() du model UsersController
+puis je met sert aussi du render pour renvoyer les informations dans ma vue profil.php en utilisant l'id de l'utilisateur:
+
+public static function profil($id)
+    {
+        $annonces = AnnoncesModel::findByUser([$id]);
+        self::render('annonces/profil', [
+            'annonces' => $annonces
+        ]);
+    }
+
+
+. Ensuite je relie le controller à mon router. Et enfin je créer une card qui affiche les annonces en fonction de l'id de l'utilisateur
+Pour avoir l'id je me sert de la session user:
+$_SESSION['user']['id']; et je la met dans une variable $id et enfin je me sert de la method profil de AnnoncesController en mettant ma variable $id dans les parametre:
+
+$id = $_SESSION['user']['id'];
+AnnoncesController::profil($id);
+
+Pour afficher toutes les annonces uniquement pour un admin il suffit de mettre
+une condition qui verifier le role de l'utilisateur et si c'est un admin je met sert de la method findAll() c'est fois ci:
+
+public static function profil($id, $role)
+    {
+        if($role === 1)
+        {
+            $annonces2 = AnnoncesModel::findAll();
+            self::render('annonces/profil', [
+                'annonces' => $annonces2
+            ]);
+        }else{
+            $annonces = AnnoncesModel::findByUser([$id]);
+            self::render('annonces/profil', [
+                'annonces' => $annonces
+            ]);
+        }
+        
+    }
+
+et pour finir je n'ai plus qu'a tout envoyer a ma vue "profill.php" en me servant du router:
+
+case 'profil':
+// echo 'profil';
+$id = $_SESSION['user']['id'];
+$role = $_SESSION['user']['role'];
+
+AnnoncesController::profil($id,$role);
+break;
+
+
+2/
+Ajouter Un bouton "Supprimer" pour supprimer l'annonce sélectionnée 
+Pour ajouter un bouton "Supprimer" je met sert du liens:
+
+<a href="" class="btn btn-danger">Supprimer</a>
+
+Pour supprimer une annonce je vais devoir creer une autre methode
+dans le controller AnnoncesController qui s'appellera "annonceSupp()"
+. Dans cette methode je vais me servir de la methode delete de AnnoncesModel
+. annonceSupp()
+
+
+3/
+Ajouter un bouton "Modifier" qui permettra de modifier l'annonce (ne pas gérer cette fonctionalité)
+Pareil que pour le boutton supprimer
+<a href="" class="btn btn-warning">Modifier</a>
+                    

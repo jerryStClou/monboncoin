@@ -31,7 +31,7 @@
                             <a class="nav-link" href="annonceAjout">Nouvelle annonces</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="profil">Profil</a>
+                            <a class="nav-link" href="profil?id=<?php echo $_SESSION['user']['id'] ?>">Profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-primary" href="deconnexion" >Deconnexion</a>
